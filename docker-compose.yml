@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  ssh-server:
+    build:
+      context: ./ssh-server
+    ports:
+      - "222:22"
+    networks:
+      - data
+
+  ssh-client:
+    build:
+      context: ./ssh-client
+    ports:
+      - "2223:22"
+    networks:
+      - data
+
+networks:
+  data:
+    driver: bridge
